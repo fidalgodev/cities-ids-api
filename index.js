@@ -33,6 +33,7 @@ const server = http.createServer((req, res) => {
 });
 
 // Listen for server on URL and PORT
-server.listen(process.env.PORT || 1337, '127.0.0.1', () => {
+const PORT = process.env.PORT || 1337;
+server.listen(process.env.PORT || PORT, () => {
   console.log('Listening for requests now.');
 });
