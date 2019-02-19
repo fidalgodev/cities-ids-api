@@ -12,6 +12,8 @@ Clone the repo and run:
 npm run server
 ```
 
-Will run on localhosy on port 1337
+Will run on localhost on port 1337
 
+```shell
 127.0.0.1:1337
+```
