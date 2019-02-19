@@ -25,6 +25,13 @@ const server = http.createServer((req, res) => {
       const regex = new RegExp(name, 'gi');
       return item.name.match(regex) || item.country.match(regex);
     });
+    const filtered = results.filter(
+      (location, i, self) =>
+        i ===
+        self.findIndex(
+          t => t.name === location.name && t.country === location.country
+        )
+    );
     // if nothing matches
     if (results.length === 0) {
       res.writeHead(404, { 'Content-type': 'text/html' });
@@ -33,7 +40,7 @@ const server = http.createServer((req, res) => {
     // if matches, return json data
     else {
       res.writeHead(200, { 'Content-type': 'application/json' });
-      res.end(JSON.stringify(results));
+      res.end(JSON.stringify(filtered));
     }
   } else {
     res.writeHead(404, { 'Content-type': 'text/html' });
